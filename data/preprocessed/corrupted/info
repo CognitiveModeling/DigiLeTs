@@ -107,4 +107,10 @@
         - y 2 (double)
         - z 1 (double)
         - X 4 (not recognizable)
+    - 108
+        - l 1 (double)
+        - p 1 (double)
+        - G 1 (double)
+        - J 2 (double)
+        - K 4 (double)
     - 109 (gaps)

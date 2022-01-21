@@ -123,7 +123,7 @@ complete = ["002", "004", "005", "007", "008", "010", "012", "013", "018", "019"
 The following list shows for which participants instances are missing or similar problems arose. They can be found in the `data/original/corrupted` directory.
 
 ```python
-corrupted = ["003", "059", "073", "097", "101", "001", "006", "009", "011", "014", "015", "016", "017", "021", "023", "024", "027", "028", "029", "034", "035", "037", "039", "042", "044", "046", "047", "048", "050", "052", "061", "063", "109"]
+corrupted = ["003", "059", "073", "097", "101", "001", "006", "009", "011", "014", "015", "016", "017", "021", "023", "024", "027", "028", "029", "034", "035", "037", "039", "042", "044", "046", "047", "048", "050", "052", "061", "063", "108", "109"]
 ```
 
 See `data/original/corrupted/info` and `data/preprocessed/corrupted/info` (same content) for detailed information about which instances are corrupted and in which way.
