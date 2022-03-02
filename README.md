@@ -23,6 +23,7 @@ Table of Contents
       * [Checking](#checking)
    * [Complete participants](#complete-participants)
    * [Corrupted participants](#corrupted-participants)
+* [Experiment](#experiments)
 * [Citation](#citation)
 
 ## Repository structure
@@ -34,7 +35,16 @@ Table of Contents
     - `preprocessed/`: preprocessed data, i.e. cleaned, extrapolated, and sampled (see below)
         - `complete/`: data for which all 5 instances of each symbol of the participants are usable
         - `corrupted/`: data for which that is not the case because of missing instances or similar problems
-- `scripts/`
+- `experiments/`:
+    - `configs/`: configuration files for experiments
+    - `data_transformer.py`: pickles dataset into single file
+    - `dataset/`: provides pytorch dataset class
+    - `examination.py`: produces DTW matrices and imitation measures
+    - `experiments/`: contains the actual experiments
+    - `main.py`: provides entry point to run experiments
+    - `models/`: contains pytorch implementations of models
+    - `util/`: provides utilities used during experiments
+- `scripts/`:
     - `check.py`: shows where bounds, pressure, pen_downs, timestamps are not okay
     - `clean.py`: marks datapoints with pressure 0 as "cleaned"
     - `concat.py`: concatenates pickle files of multiple participants into single dataset
@@ -127,6 +137,10 @@ corrupted = ["003", "059", "073", "097", "101", "001", "006", "009", "011", "014
 ```
 
 See `data/original/corrupted/info` and `data/preprocessed/corrupted/info` (same content) for detailed information about which instances are corrupted and in which way.
+
+## Experiments
+
+Code for our experiments can be found in `experiments/`. Please see the paper for more details.
 
 ## Citation
 
