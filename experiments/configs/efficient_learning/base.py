@@ -3,7 +3,7 @@ from util import openslice, multislice
 config = {
     "name": f"Base",
     "experiment_name": "EfficientLearning",
-    "dataset_path": "./data/transformed/cogmod.pickle",
+    "dataset_path": "./data.pickle",
     "load_pretransformed": True,
     "run_directory": f"./runs/efficient/base",
     "plot_directory": "images",

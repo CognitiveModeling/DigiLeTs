@@ -9,7 +9,7 @@ import experiments
 from util.config_iterator import ConfigIterator
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser("description=Begin an experiment with the Styling Trajectories architecture, "
+    parser = argparse.ArgumentParser(description="Begin an experiment with the Styling Trajectories architecture, "
                                      "use without arguments to start interactive prompt.")
     parser.add_argument('config_path')
     parser.add_argument('--overwrite_config', '-o', nargs="*", default=[])

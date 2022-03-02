@@ -3,7 +3,7 @@ from util import openslice, multislice
 config = {
     "name": "Visualize",
     "experiment_name": "ExtendingOmniglot",
-    "dataset_path": "./data/transformed/cogmod.pickle",
+    "dataset_path": "./data.pickle",
     "load_pretransformed": True,
     "run_directory": "./runs/extomni/visualize",
     "plot_directory": "images",

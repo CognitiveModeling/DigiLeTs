@@ -46,7 +46,7 @@ def dtw_total(parts, chars, insts, pressure, device, model=None, name="original"
     :return:
     """
     trans_traj = transforms.Compose([ToTensor(), traj_data.ToOnehot(62, 77)])
-    data_traj = TrajectoriesDataset("./data/transformed/cogmod.pickle", transform=trans_traj, load_pretransformed=True)
+    data_traj = TrajectoriesDataset("./data.pickle", transform=trans_traj, load_pretransformed=True)
     dataset_to_model = model is None
 
     dtw_matrix = np.zeros((len(parts), len(parts), len(chars), len(insts), len(insts)))
@@ -147,7 +147,7 @@ def measure_dtw_total():
 
 def plot_by_participant(model=None):
     trans_traj = transforms.Compose([ToTensor(), traj_data.ToOnehot(62, 77)])
-    data_traj = TrajectoriesDataset("./data/transformed/cogmod.pickle", transform=trans_traj, load_pretransformed=True)
+    data_traj = TrajectoriesDataset("./data.pickle", transform=trans_traj, load_pretransformed=True)
 
     plotter = Plotter(0.9, "pdf")
 
