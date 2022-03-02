@@ -1,3 +1,5 @@
+__author__ = "Julius Wührer, Fedor Scholz"
+
 import os
 import pickle
 import glob

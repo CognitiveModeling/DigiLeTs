@@ -1,3 +1,5 @@
+__author__ = "Julius Wührer"
+
 import inspect
 import os
 import time

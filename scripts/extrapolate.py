@@ -1,3 +1,5 @@
+__author__ = "Fedor Scholz"
+
 import os
 import sys
 

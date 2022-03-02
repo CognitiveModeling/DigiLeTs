@@ -1,3 +1,5 @@
+__author__ = "Julius Wührer"
+
 """
 Sample examination / utility functions
 """

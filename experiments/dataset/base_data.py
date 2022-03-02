@@ -1,3 +1,5 @@
+__author__ = "Julius Wührer"
+
 from abc import ABC, abstractmethod
 
 from torch.utils.data import Dataset

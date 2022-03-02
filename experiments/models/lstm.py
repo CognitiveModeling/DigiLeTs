@@ -1,3 +1,5 @@
+__author__ = "Julius Wührer"
+
 import torch.nn as nn
 
 

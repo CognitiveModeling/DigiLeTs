@@ -1,3 +1,5 @@
+__author__ = "Julius Wührer"
+
 import inspect
 import os
 import time
@@ -187,7 +189,7 @@ class EfficientLearning(BaseExperiment):
         """
         One step of the training loop
         :param epoch: Current epoch
-        :return: 
+        :return:
         """
         self.model.train()
         for batch_idx, (targets, inputs, _, lengths, (label_parts, label_chars, label_insts)) in enumerate(
@@ -219,8 +221,8 @@ class EfficientLearning(BaseExperiment):
                         raise e
 
             batch_size = targets.size(1)
-            
-            # plotting every few steps for an overview on 
+
+            # plotting every few steps for an overview on
             if self.config["plot_every"] is not None:
                 for i in range(self.global_step, self.global_step + batch_size):
                     if i % self.config["plot_every"] == 0:
@@ -247,7 +249,7 @@ class EfficientLearning(BaseExperiment):
         """
         One step of the testing loop (can also be used singularly)
         :param epoch: Current epoch
-        :return: 
+        :return:
         """
         self.model.eval()
         val_loss = 0

@@ -1,3 +1,5 @@
+__author__ = "Julius Wührer"
+
 """
 Script to pretransform all individual datapoints in our dataset
 and save them in a single file to speed up training.
