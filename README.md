@@ -29,10 +29,10 @@ Table of Contents
 ## Repository structure
 
 - `data/`:
-    - `original/`: original data
+    - `raw/`: original raw data
         - `complete/`: data for which all 5 instances of each symbol of the participants are usable
         - `corrupted/`: data for which that is not the case because of missing instances or similar problems
-    - `preprocessed/`: preprocessed data, i.e. cleaned, extrapolated, and sampled (see below)
+    - `preprocessed/`: preprocessed data, i.e. cleaned, extrapolated, and partially resampled (see below)
         - `complete/`: data for which all 5 instances of each symbol of the participants are usable
         - `corrupted/`: data for which that is not the case because of missing instances or similar problems
 - `experiments/`:
@@ -78,7 +78,7 @@ During recording paricipants saw a mainly black screen with a white square corre
 
 After recording participants 001-036, we noticed that sometimes participants wrote the wrong symbols or pressed buttons too early while still writing. This sometimes led to corrupted data (which we filtered out), so we adjusted the script to avoid wasting further data. With this modification participants again saw the white square. On the right side of the screen, they furthermore saw the current symbol and five boxes. After writing instances of symbols and pressing the next button, these boxes were filled with the instances the participants produced. After five instances, participants had to press a different button, namely the confirm button, to be forwarded to the generation of the next symbol. Furthermore, they had the possibility to jump between their instances, clear, and rewrite them if desired. This way, much less wrong symbols were written by the participants and buttons were not pressed during writing anymore.
 
-Original data can be found in `data/original/`. There is one file for each participant. Each instance is represented by two lines. The first line contains the recorded datapoints. For each point, the x and y coordinates, the pressure, whether the pen was put down, and a relative timestamp are dumped to file, separated by whitespaces. The data of the different points is simply concatenated and again separated by whitespaces. The second line is a one-hot encoding of the symbol with a length of 62.
+Original raw data can be found in `data/raw/`. There is one file for each participant. Each instance is represented by two lines. The first line contains the recorded datapoints. For each point, the x and y coordinates, the pressure, whether the pen was put down, and a relative timestamp are dumped to file, separated by whitespaces. The data of the different points is simply concatenated and again separated by whitespaces. The second line is a one-hot encoding of the symbol with a length of 62.
 
 For each participant, we furthermore recorded their ID, age, gender, handedness, and the date of recording. This information is stored in the filename.
 
@@ -122,7 +122,7 @@ Checking is done in `scripts/check.py`. This script shows which datapoints are o
 
 ### Complete participants
 
-All 5 instances of each symbol of the participants with the following IDs are considered complete. They can be found in the `data/original/complete` directory.
+All 5 instances of each symbol of the participants with the following IDs are considered complete. They can be found in the `data/raw/complete` directory.
 
 ```python
 complete = ["002", "004", "005", "007", "008", "010", "012", "013", "018", "019", "020", "022", "025", "026", "030", "031", "032", "033", "036", "038", "040", "041", "043", "045", "049", "051", "053", "054", "055", "056", "057", "058", "060", "062", "064", "065", "066", "067", "068", "069", "070", "071", "072", "074", "075", "076", "077", "078", "079", "080", "081", "082", "083", "084", "085", "086", "087", "088", "089", "090", "091", "092", "093", "094", "095", "096", "098", "099", "100", "102", "103", "104", "105", "106", "107", "110", "111"]
@@ -130,13 +130,13 @@ complete = ["002", "004", "005", "007", "008", "010", "012", "013", "018", "019"
 
 ### Corrupted participants
 
-The following list shows for which participants instances are missing or similar problems arose. They can be found in the `data/original/corrupted` directory.
+The following list shows for which participants instances are missing or similar problems arose. They can be found in the `data/raw/corrupted` directory.
 
 ```python
 corrupted = ["003", "059", "073", "097", "101", "001", "006", "009", "011", "014", "015", "016", "017", "021", "023", "024", "027", "028", "029", "034", "035", "037", "039", "042", "044", "046", "047", "048", "050", "052", "061", "063", "108", "109"]
 ```
 
-See `data/original/corrupted/info` and `data/preprocessed/corrupted/info` (same content) for detailed information about which instances are corrupted and in which way.
+See `data/raw/corrupted/info` and `data/preprocessed/corrupted/info` (same content) for detailed information about which instances are corrupted and in which way.
 
 ## Experiments
 
