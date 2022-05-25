@@ -23,7 +23,7 @@ Table of Contents
       * [Checking](#checking)
    * [Complete participants](#complete-participants)
    * [Corrupted participants](#corrupted-participants)
-* [Experiment](#experiments)
+* [Experiments](#experiments)
 * [Citation](#citation)
 
 ## Repository structure
@@ -140,7 +140,7 @@ See `data/raw/corrupted/info` and `data/preprocessed/corrupted/info` (same conte
 
 ## Experiments
 
-Code for our experiments can be found in `experiments/`. Please see the paper for more details.
+Code for our experiments can be found in `experiments/`. All experiments are based on the clean, preprocessed data sequences: `data/preprocessed/complete/`. Please see the paper for more details.
 
 ## Citation
 
