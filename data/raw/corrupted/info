@@ -1,0 +1,116 @@
+- Scribble
+    - 003
+    - 059
+    - 073
+    - 097
+    - 101
+- Missing
+    - 001
+        - p 0 (is o)
+    - 006 (scribble)
+        - 0 4 (missing)
+        - n 1 (missing)
+        - p 0 (missing)
+        - t 0 (is t)
+    - 009 (scribble)
+        - M 0 (missing)
+    - 011
+        - b 2 (missing)
+    - 014
+        - L 0 (is K)
+    - 015
+        - 4 0 (is 3)
+        - l 0 (is I)
+        - l 1 (is I)
+        - l 2 (is I)
+    - 016 (scribble)
+        - 2 1 (not recognizable)
+    - 017
+        - K 2 (not recognizable)
+        - P 2 (not recognizable)
+        - Q 3 (not recognizable)
+    - 021
+        - v 0 (is u)
+        - T 2 (is U)
+        - T 3 (is U)
+        - T 4 (is U)
+    - 023 (scribble)
+        - 6 0 (is 5)
+        - 7 0 (is 6)
+        - 8 0 (is 7)
+        - e 0 (is d)
+        - e 1 (is d)
+        - e 2 (is d)
+        - t 1 (not recognizable)
+        - t 3 (not recognizable)
+        - x 4 (not recognizable)
+        - Y 0 (is X)
+        - Y 1 (is X)
+    - 024
+        - 1 4 (missing)
+    - 027
+        - t 0 (missing)
+        - R 2 (gap)
+    - 028
+        - 5 1 (not recognizable)
+        - b 4 (missing)
+        - C 0 (is B)
+        - Z 0 (not recognizable)
+    - 029 (gaps)
+    - 034
+        - d 1 (not recognizable)
+        - x 1 (not recognizable)
+    - 035
+        - H 3 (not recognizable)
+    - 037
+        - 7 4 (missing)
+    - 039
+        - Q 4 (not recognizable)
+    - 042
+        - p 4 (missing)
+        - A 4 (missing)
+        - H 4 (missing)
+        - O 4 (not recognizable)
+    - 044
+        - G 4 (missing)
+        - Q 4 (missing)
+    - 046
+        - T 4 (not recognizable)
+    - 047 (scribble, something weird happened here)
+        - 2 4 (missing)
+        - 5 4 (missing)
+        - 6 4 (missing)
+        - 7 4 (missing)
+        - 9 4 (missing)
+        - a 4 (missing)
+        - b 4 (missing)
+        - c 4 (missing)
+        - d 4 (not recognizable)
+        - f 4 (missing)
+        - g 4 (missing)
+        - h 4 (missing)
+        - i 4 (missing)
+        - k 4 (missing)
+        - l 4 (missing)
+        - o 4 (missing)
+        - p 4 (missing)
+    - 048
+        - W 4 (missing)
+    - 050
+        - t 4 (missing)
+    - 052
+        - k 4 (missing)
+    - 061
+        - W 4 (missing)
+    - 063 (scribble)
+        - y 1 (double)
+        - y 2 (double)
+        - z 1 (double)
+        - X 4 (not recognizable)
+    - 108
+        - l 1 (double)
+        - p 1 (double)
+        - G 1 (double)
+        - J 2 (double)
+        - K 4 (double)
+    - 109 (gaps)
