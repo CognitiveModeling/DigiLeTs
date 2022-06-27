@@ -5,8 +5,16 @@ def extract_vals(batched_values, i, sum=True):
     """Takes a batched value tensor and converts it to a tuple of numpy arrays,
     optionally summing the dx and dy values into positions x and y"""
     batched_values = batched_values.cpu()
-    x, y, p, s = batched_values[:, i, 0], batched_values[:, i, 1], batched_values[:, i, 2], batched_values[:, i, 3]
-    x, y, p, s = x.detach().numpy(), y.detach().numpy(), p.detach().numpy(), s.detach().numpy()
+    x, y = batched_values[:, i, 0], batched_values[:, i, 1]
+    x, y = x.detach().numpy(), y.detach().numpy()
+    p = np.ones(x.shape)
+    if batched_values.size(2) >= 3:
+        p = batched_values[:, i, 2]
+        p = p.detach().numpy()
+    s = np.concatenate(([1], np.zeros(x.shape[0] - 1)))
+    if batched_values.size(2) == 4:
+        s = batched_values[:, i, 3]
+        s = s.detach().numpy()
     if sum:
         x, y = np.cumsum(x), np.cumsum(y)
     return x, y, p, s

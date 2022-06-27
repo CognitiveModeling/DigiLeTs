@@ -9,7 +9,7 @@ config = {
     "plot_directory": "images",
     "load_model": False,
     "continue": False,
-    "model_path": "./runs/efficient/base/",
+    "model_path": "./runs/efficient/base/models/Base_epoch199.pth",
     "mode": "one_shot_inf",
     "test": True,
     "dtw": False,

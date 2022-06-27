@@ -5,9 +5,6 @@ import os
 import time
 
 import torch
-import numpy as np
-from fastdtw import fastdtw
-import matplotlib.pyplot as plt
 
 from util.logging import Logger
 from util.dtw import dtw_distance
@@ -48,12 +45,6 @@ class ExtendingOmniglot(BaseExperiment):
                     self.test(epoch)
                 if epoch % self.config["save_interval"] == 0 or epoch == self.config["epochs_one_shot_inf"] - 1:
                     self.save(epoch)
-        elif self.config["mode"] == "classify":
-            self.classify(self.config["classify_steps"])
-        elif self.config["mode"] == "variant":
-            pass
-        elif self.config["mode"] == "blend":
-            pass
         if self.config["mode"] == "test":
             self.test(0)
         self.end()
@@ -202,11 +193,11 @@ class ExtendingOmniglot(BaseExperiment):
                 targets, inputs_character, inputs_participant, lengths,
                 (label_parts, label_chars, label_insts)) in enumerate(
             self.train_loader):
-            targets = torch.Tensor(targets)
             tries = 0
             while True:
                 try:
-                    targets = targets.to(self.device)
+                    target_tensors = torch.Tensor(targets)[:,:,:self.config["output_size"]]
+                    target_tensors = target_tensors.to(self.device)
                     inputs_character = inputs_character.to(self.device)
                     inputs_participant = inputs_participant.to(self.device)
                     # lengths = lengths.to(self.device) pack_padded_sequence crashes if lengths are on cuda
@@ -214,7 +205,7 @@ class ExtendingOmniglot(BaseExperiment):
 
                     outputs = self.model(inputs_character, inputs_participant, lengths)
 
-                    loss = self.criterion(outputs, targets)
+                    loss = self.criterion(outputs, target_tensors)
                     loss.backward()
                     self.optimizer.step()
                     break
@@ -272,9 +263,9 @@ class ExtendingOmniglot(BaseExperiment):
                     try:
                         inputs_character = inputs_character.to(self.device)
                         inputs_participant = inputs_participant.to(self.device)
-                        targets = targets.to(self.device)
+                        target_tensors = targets.to(self.device)[:,:,:self.config["output_size"]]
                         outputs = self.model(inputs_character, inputs_participant, lengths)
-                        val_loss += self.criterion(outputs, targets)
+                        val_loss += self.criterion(outputs, target_tensors)
                         break
                     except RuntimeError as e:
                         if ('unspecified launch failure' in str(e) or 'out of memory' in str(e)) and tries < 5:
@@ -341,17 +332,17 @@ class ExtendingOmniglot(BaseExperiment):
                 (label_parts, label_chars, label_insts)) in enumerate(
             self.oneshot_loader):
             tries = 0
-            targets = torch.Tensor(targets)
             while True:
                 try:
-                    targets = targets.to(self.device)
+                    target_tensors = torch.Tensor(targets)[:,:,:self.config["output_size"]]
+                    target_tensors = target_tensors.to(self.device)
 
                     inputs_character = inputs_character.to(self.device)
                     inputs_participant = inputs_participant.to(self.device)
                     self.optimizer.zero_grad()
 
                     outputs = self.model(inputs_character, inputs_participant, lengths)
-                    loss = self.criterion(outputs, targets)
+                    loss = self.criterion(outputs, target_tensors)
                     loss.backward()
                     self.optimizer.step()
                     break

@@ -5,7 +5,6 @@ import os
 import time
 
 import torch
-import numpy as np
 
 from util.logging import Logger
 from util.plotting import *
@@ -197,8 +196,8 @@ class EfficientLearning(BaseExperiment):
             tries = 0
             while True:
                 try:
-                    targets = torch.Tensor(targets)
-                    targets = targets.to(self.device)
+                    target_tensors = torch.Tensor(targets)[:, :, :self.config["output_size"]]
+                    target_tensors = target_tensors.to(self.device)
                     inputs = inputs.to(self.device)
                     # lengths = lengths.to(self.device) pack_padded_sequence crashes if lengths are on cuda, do not un-
                     # comment until fix is included in Pytorch
@@ -206,7 +205,7 @@ class EfficientLearning(BaseExperiment):
 
                     outputs = self.model(inputs, None, lengths)
 
-                    loss = self.criterion(outputs, targets)
+                    loss = self.criterion(outputs, target_tensors)
                     loss.backward()
                     self.optimizer.step()
                     break
@@ -262,9 +261,9 @@ class EfficientLearning(BaseExperiment):
                 while True:
                     try:
                         inputs = inputs.to(self.device)
-                        targets = targets.to(self.device)
+                        target_tensors = targets.to(self.device)[:, :, :self.config["output_size"]]
                         outputs = self.model(inputs, None, lengths)
-                        val_loss += self.criterion(outputs, targets)
+                        val_loss += self.criterion(outputs, target_tensors)
                         break
                     except RuntimeError as e:
                         if ('unspecified launch failure' in str(e) or 'out of memory' in str(e)) and tries < 5:
@@ -330,14 +329,14 @@ class EfficientLearning(BaseExperiment):
             tries = 0
             while True:
                 try:
-                    targets = torch.Tensor(targets)
-                    targets = targets.to(self.device)
+                    target_tensors = torch.Tensor(targets)[:, :, :self.config["output_size"]]
+                    target_tensors = target_tensors.to(self.device)
 
                     inputs = inputs.to(self.device)
                     self.optimizer.zero_grad()
 
                     outputs = self.model(inputs, None, lengths)
-                    loss = self.criterion(outputs, targets)
+                    loss = self.criterion(outputs, target_tensors)
                     loss.backward()
                     self.optimizer.step()
                     break

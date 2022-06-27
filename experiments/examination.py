@@ -70,6 +70,7 @@ def dtw_total(parts, chars, insts, pressure, device, model=None, name="original"
                     x, y, p, s = extract_vals(output, 0)
                     stack = np.column_stack((x, y))
 
+                    # only if net actually predicted pressure, crash otherwise
                     if pressure:
                         stack = np.column_stack((stack, p))
 

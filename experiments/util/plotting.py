@@ -146,7 +146,7 @@ class Plotter:
         lim = max(x.max(), abs(x.max()), y.max(), abs(y.max()))
         ax.set_aspect(1)
 
-    def _line(self, ax, x, y, p, s, color="blue", pressure_scale=1, tight=False, background=None, stretch_cmap=None):
+    def _line(self, ax, x, y, p, s, color="blue", pressure_scale=1, tight=False):
         """
         Creates a lineplot from a trajectory, slightly hacked together with a LineCollection.
         :param ax: The matplotlib axis object to plot onto

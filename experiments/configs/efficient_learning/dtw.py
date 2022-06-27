@@ -1,7 +1,7 @@
 from util import openslice, multislice
 
 config = {
-    "name": "Untrained_DTW",
+    "name": "DTW",
     "experiment_name": "EfficientLearning",
     "dataset_path": "./data.pickle",
     "load_pretransformed": True,
@@ -33,7 +33,7 @@ config = {
     "num_layers": 1,
     "hidden_bias": False,
     "dropout": 0,
-    "output_size": 4,
+    "output_size": 2,
     "output_bias": False,
     "criterion": "mse_loss",
     "optimizer": "adam",
