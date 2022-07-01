@@ -159,20 +159,24 @@ def plot_by_participant(model=None):
         for c in range(62):
             for i in range(5):
                 target, input, part, length, _ = data_traj.get_pci(p, c, i)
-                tx, ty, tp, ts = extract_vals(target, 0)
-                params.append(((tx, ty, tp, ts), {"color": plt.get_cmap("viridis"), "pressure_scale": 3}))
+                tx, ty, tpr, ts = extract_vals(target, 0)
+                params.append(((tx, ty, tpr, ts), {"color": plt.get_cmap("viridis"), "pressure_scale": 3}))
                 if model is not None:
                     output = model(input, part, length)
-                    x, y, p, s = extract_vals(output, 0)
-                    params.append(((x, y, p, s), {"color": plt.get_cmap("viridis"), "pressure_scale": 3}))
+                    x, y, pr, s = extract_vals(output, 0)
+                    params.append(((x, y, pr, s), {"color": plt.get_cmap("viridis"), "pressure_scale": 3}))
         plotter.lineplot(params, 62, 10 if model is not None else 5, path=f"./examination/visualize/participant-{p}")
 
 
 def plot():
-    device = torch.device("cuda")
+    device = torch.device("cpu")
     model = Encoding(character_size=62, participant_size=77, hidden_size=100, embedding_size=50, num_layers=1,
-                     hidden_bias=False, dropout=0, output_size=4, output_bias=False, inf=True, infer_target="both")
+                     hidden_bias=False, dropout=0, output_size=2, output_bias=False, inf=True, infer_target="both")
     model.to(device)
-    # load(model, "runs/extomni/oneshot/models/Oneshot_epoch999.pth")
+    load(model, "runs/extomni/oneshot/models/Oneshot_epoch999.pth")
 
-    plot_by_participant()
+    plot_by_participant(model)
+
+
+if __name__ == '__main__':
+    plot()
